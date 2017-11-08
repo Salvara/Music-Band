@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<title>Untitled Document</title>
+<style>
+	
+	.SongSelection {
+		float: left;
+		width: 70%;
+		display: inline-block;
+		background-color: #BBE2E7;
+	}
+	
+	.card {
+		display: inline-block!important;
+		width:33%;
+		padding: 10px;
+		background-color: grey;
+		margin: 10px;
+		font: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+		font-size: 0.8em;
+	}
+	
+	#playlist {
+		float: right;
+		width: 30%;
+		display: inline-block;
+		background-color: #F5F9AE;
+	}
+	.songlist {
+		display: block!important;
+		width:70%;
+		padding: 10px;
+		background-color: grey;
+		margin: 10px;
+		float:right;
+	}
+	
+	.inline-block {
+		display: inline-block!important;
+		vertical-align: middle;
+		padding: 10px;
+	}
+	</style>
+	
+	</head>
+
+	
+	
+<body>
+	<div>
+			<h2>Song Selection</h2>
+			<div class="SongSelection cards">
+				<!--Cards push here-->
+			</div>
+	</div>
+	<div >
+			<h2>The Playlist</h2>
+			<div id="playlist">
+				<!--Selected songs push here-->
+			</div>
+	</div>
+	</div>
+	<!--JAVASCRIPT-->
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+	<script >
+		
+	$.getJSON( "songbank.json", function( data ) {
+  var cards = [];
+  $.each( data, function( key, val ) {
+    cards.push(`
+				  <div class="card col-2">
+				  	<div width="20%" class="inline-block">
+				  		<input type="checkbox" name="song-select" value="selected">
+					</div>
+				  	<div width="80%" class="inline-block" data-genre="${val.Genre}" data-decade="${val.Decade}">
+						<span id="artist">${val.Artist}</span><br>
+						<span id="song"> ${val.Title} </span>
+					</div>
+				</div>
+				  `);
+  });
+ 
+$('.SongSelection').html(cards.join(''));
+
+		$('input[type="checkbox"]').bind('change', function() {
+	var playlist = [];
+	$('input[type="checkbox"]').each(function(index, value) {
+		if (this.checked) {
+			var song = $(this).closest(".card").find("#song").text()
+			/*add*/ /*get label text associated with checkbox*/
+			playlist.push('<DIV class="songlist">'+song+'</DIV>')	
+		}
+	});
+    
+	$('#playlist').html(playlist.join(''));
+	//console.log($('#playlist').html());
+	
+	
+});
+		
+	
+  });
+ 	
+	</script>
+	
+	<!--
+	<div class="card col-3">
+			 <div width="20%" id="inline-block">
+				  <input type="checkbox" name="artist" value="selected">
+			</div>
+			<div width="80%" id="inline-block">
+				<span id="artist">Belle and Sebastian</span><br>
+				<span id="song">Step into my office</span>
+			</div>
+		</div>
+	-->
+	
+</body>
+</html>

@@ -1,0 +1,37 @@
+﻿[
+ {
+   "id": 1,
+   "Artist": "Bella and Sebastian",
+   "Title": "Step into my office",
+   "Genre": "Acoustic",
+   "Decade": "2000's"
+ },
+ {
+   "id": 2,
+   "Artist": "Queen",
+   "Title": "Bohemian Rhapsody",
+   "Genre": "Rock",
+   "Decade": "1980's"
+ },
+ {
+   "id": 3,
+   "Artist": "Fiest",
+   "Title": "1234",
+   "Genre": "Acoustic",
+   "Decade": "2010's"
+ },
+ {
+   "id": 4,
+   "Artist": "Abba",
+   "Title": "Dancing Queen",
+   "Genre": "Disco",
+   "Decade": "1970's"
+ },
+ {
+   "id": 5,
+   "Artist": "Justin Timberlake",
+   "Title": "Cry me a river",
+   "Genre": "Pop",
+   "Decade": "1990's"
+ }
+]
